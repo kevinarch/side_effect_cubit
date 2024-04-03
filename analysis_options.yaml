@@ -1,0 +1,52 @@
+include: package:flutter_lints/flutter.yaml
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
+
+
+analyzer:
+
+
+  errors:
+    parameter_assignments: error
+    depend_on_referenced_packages: false
+    
+    constant_identifier_names: false
+    non_constant_identifier_names: false
+
+    # false positive with implicit return
+    body_might_complete_normally_catch_error: ignore
+    # nullable implicit return
+    body_might_complete_normally_nullable: ignore
+    # bloc library don't respect this
+    invalid_use_of_visible_for_testing_member: ignore
+    # false positive for some libraries: freezed
+    invalid_annotation_target: ignore
+    # false positive when using default value
+    unused_element: ignore
+
+rules:
+    - always_declare_return_types
+    - annotate_overrides
+    - avoid_bool_literals_in_conditional_expressions
+    - avoid_catching_errors
+    - avoid_implementing_value_types
+    - avoid_private_typedef_functions
+    - avoid_redundant_argument_values
+    - avoid_type_to_string
+    - avoid_unused_constructor_parameters
+    - avoid_void_async
+    - cancel_subscriptions
+    - cast_nullable_to_non_nullable
+    - deprecated_consistency
+    - exhaustive_cases
+    - parameter_assignments
+    - prefer_function_declarations_over_variables
+    - provide_deprecation_message
+    - test_types_in_equals
+    - unnecessary_await_in_return
+    - directives_ordering
+    - prefer_relative_imports
+    - avoid_equals_and_hash_code_on_mutable_classes
+    - do_not_use_environment
+    - use_if_null_to_convert_nulls_to_bools
