@@ -103,11 +103,12 @@ class _BlocSideEffectConsumerState<B extends StateStreamable<STATE>, STATE,
   }
 
   void _subscribe() {
-    if (_bloc is! SideEffectCubit<STATE, SIDE_EFFECT>) {
-      throw Exception("Cubit dont' conform SideEffectCubit, did you forget ?");
+    if (_bloc is! SideEffectProvider<SIDE_EFFECT>) {
+      throw Exception(
+          "Bloc/Cubit dont'conform SideEffectProvider of ${SIDE_EFFECT.runtimeType}");
     }
 
-    final sideEffectCubit = _bloc as SideEffectCubit<STATE, SIDE_EFFECT>;
+    final sideEffectCubit = _bloc as SideEffectProvider<SIDE_EFFECT>;
     _subscription = sideEffectCubit.sideEffects.listen((command) {
       widget.sideEffectListener?.call(context, command);
     });

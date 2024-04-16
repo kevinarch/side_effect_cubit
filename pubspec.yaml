@@ -2,7 +2,7 @@ name: side_effect_cubit
 description: >
   "An extension to the bloc state management library which serve an additional stream 
   for events that should be consumed only once"
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/kevinarch/side_effect_cubit
 
 environment:
@@ -20,3 +20,4 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+  mocktail: ^1.0.0

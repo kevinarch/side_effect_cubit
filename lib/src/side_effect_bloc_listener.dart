@@ -13,8 +13,9 @@ typedef BlocWidgetSideEffectListener<SIDE_EFFECT> = void Function(
   SIDE_EFFECT sideEffect,
 );
 
-abstract class BlocSideEffectListenerBase<B extends SideEffectProvider<SIDE_EFFECT>, SIDE_EFFECT>
-    extends SingleChildStatefulWidget {
+abstract class BlocSideEffectListenerBase<
+    B extends SideEffectProvider<SIDE_EFFECT>,
+    SIDE_EFFECT> extends SingleChildStatefulWidget {
   const BlocSideEffectListenerBase({
     super.key,
     required this.listener,
@@ -32,8 +33,8 @@ abstract class BlocSideEffectListenerBase<B extends SideEffectProvider<SIDE_EFFE
       _BlocSideEffectListenerBaseState<B, SIDE_EFFECT>();
 }
 
-class BlocSideEffectListener<B extends SideEffectProvider<SIDE_EFFECT>, SIDE_EFFECT>
-    extends BlocSideEffectListenerBase<B, SIDE_EFFECT>
+class BlocSideEffectListener<B extends SideEffectProvider<SIDE_EFFECT>,
+        SIDE_EFFECT> extends BlocSideEffectListenerBase<B, SIDE_EFFECT>
     with BlocSideEffectListenerSingleChildWidget {
   const BlocSideEffectListener({
     super.key,
@@ -43,7 +44,8 @@ class BlocSideEffectListener<B extends SideEffectProvider<SIDE_EFFECT>, SIDE_EFF
   });
 }
 
-class _BlocSideEffectListenerBaseState<B extends SideEffectProvider<SIDE_EFFECT>, SIDE_EFFECT>
+class _BlocSideEffectListenerBaseState<
+        B extends SideEffectProvider<SIDE_EFFECT>, SIDE_EFFECT>
     extends SingleChildState<BlocSideEffectListenerBase<B, SIDE_EFFECT>> {
   StreamSubscription<SIDE_EFFECT>? _subscription;
   late B _bloc;
@@ -63,9 +65,9 @@ class _BlocSideEffectListenerBaseState<B extends SideEffectProvider<SIDE_EFFECT>
     if (oldBloc != currentBloc) {
       if (_subscription != null) {
         _unsubscribe();
-        _bloc = currentBloc;
       }
 
+      _bloc = currentBloc;
       _subscribe();
     }
   }
@@ -77,9 +79,9 @@ class _BlocSideEffectListenerBaseState<B extends SideEffectProvider<SIDE_EFFECT>
     if (_bloc != bloc) {
       if (_subscription != null) {
         _unsubscribe();
-        _bloc = bloc;
       }
 
+      _bloc = bloc;
       _subscribe();
     }
   }
