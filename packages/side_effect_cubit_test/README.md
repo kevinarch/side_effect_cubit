@@ -20,7 +20,7 @@ Traditionally, testing side effects in a Bloc involved a cumbersome process. Dev
   blocTest<RarOnboardingBloc, RarOnboardingState>(
     "should produce RarOnboardingEkycInitFailure when init ekyc plugin fail",
     setUp: () {
-      when(() => rarRepository.getFaceAuthenConfig()).thenAnswer((_) async => CakeFaceAuthenService.defaultConfig);
+      when(() => rarRepository.getFaceAuthenConfig()).thenAnswer((_) async => FaceAuthenService.defaultConfig);
       when(() => ekycPlugin.initialize(any())).thenAnswer((_) async => EKYCFailure());
     },
     build: () {
@@ -48,7 +48,7 @@ This approach introduces redundancy and makes test code verbose, especially when
 sideEffectBlocTest<RarOnboardingBloc, RarOnboardingState, RarOnboardingSideEffect>(
     "should produce RarOnboardingEkycInitFailure when init ekyc plugin fail",
     setUp: () {
-      when(() => rarRepository.getFaceAuthenConfig()).thenAnswer((_) async => CakeFaceAuthenService.defaultConfig);
+      when(() => rarRepository.getFaceAuthenConfig()).thenAnswer((_) async => FaceAuthenService.defaultConfig);
       when(() => ekycPlugin.initialize(any())).thenAnswer((_) async => EKYCFailure());
     },
     build: () => bloc,
