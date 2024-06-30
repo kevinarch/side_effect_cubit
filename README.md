@@ -1,97 +1,13 @@
-# Side Effect Cubit
+# Side Effect Workspace
 
-An extension to the bloc state management library which serve an additional stream for events that should be consumed only once - as usual called one-time events. 
+This workspace contains several packages that facilitate testing blocs that produce side effects. The main packages are:
 
-## Usage
-
-### 1. Adding to existing one
-
-For Bloc:
-
-```dart
-class FeatureBloc extends Bloc<FeatureEvent, FeatureState>
-    with SideEffectBlocMixin<FeatureEvent, FeatureState, FeatureSideEffect> {
-  FeatureBloc() : super(FeatureState.initial());
-}
-```
-
-For Cubit:
-
-```dart
-  class FeatureCubit extends Cubit<FeatureState>
-    with SideEffectCubitMixin<FeatureState, FeatureSideEffect> {
-  FeatureCubit() : super(FeatureState.initial());
-}
-```
-
-### 2. Inherit
-
-For Bloc:
-
-```dart
-class FeatureBloc extends SideEffectBloc<FeatureEvent, FeatureState, FeatureSideEffect>{
-  FeatureBloc() : super(FeatureState.initial());
-}
-```
-
-For Cubit:
-
-```dart
-class FeatureCubit extends SideEffectCubit<FeatureState, FeatureSideEffect> {
-  FeatureCubit() : super(FeatureState.initial());
-}
-```
-
-### Emit side effect
-
-```dart
-class FeatureBloc extends SideEffectBloc<FeatureEvent, FeatureState, FeatureSideEffect>{
-  FeatureBloc() : super(FeatureState.initial()){        
-    on<ItemClick>(
-      (event, emit) {
-        produceSideEffect(FeatureSideEffect.openItem(event.id));
-      },
-    );
-  }
-}
-```
+- **side_effect_cubit**: This package introduces the concept of side effects in a bloc, allowing for more flexible and modular state management.
+- **side_effect_cubit_test**: This package is designed to test blocs that produce side effects, inheriting from the bloc_test package and adding features for expecting side effects to be emitted.
 
 
-```dart
-class FeatureCubit extends SideEffectCubit<FeatureState, FeatureSideEffect> {
-  FeatureCubit() : super(FeatureState.initial());
+## Contributing
+Contributions are welcome! Please read the contributing guidelines before submitting a pull request.
 
-  Future<void> doSomething() {
-    produceSideEffect(FeatureSideEffect.openItem(event.id));
-  }
-}
-```
-
-### Listen side effect
-
-```dart
-BlocSideEffectListener<FeatureBloc, FeatureSideEffect>(
-    listener: (BuildContext context, FeatureSideEffect sideEffect) {
-        sideEffect.when(
-            goToNextScreen: () => Navigator.of(context).pushNamed("/second_screen"),
-            showPopupError: (errMsg) {
-                // ....
-            });
-    },
-    child: ...
-)
-```
-
-```dart
-BlocSideEffectConsumer<FeatureBloc, FeatureState, FeatureSideEffect>(
-    sideEffectListener: (BuildContext context, FeatureSideEffect sideEffect) {
-
-    },
-    listenWhen: (previos, current) {},
-    listen: (previous, current) {},
-    buildWhen: (previous, current) => true,
-    builder: (BuildContext context,  FeatureState state) {
-        return ...
-    }
-)
-```
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.

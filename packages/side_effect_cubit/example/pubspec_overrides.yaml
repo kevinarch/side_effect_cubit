@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: side_effect_cubit
+dependency_overrides:
+  side_effect_cubit:
+    path: ..
