@@ -1,10 +1,11 @@
 name: side_effect_cubit_test
-description: Test package for side_effect_cubit
+description: This is a testing utility designed to simplify the process of testing Blocs that produce side effects. It builds upon the bloc_test package and introduces features that allow developers to expect side effects to be emitted
 repository: https://github.com/kevinarch/side_effect_cubit
-version: 1.0.1
+version: 1.0.2
 
 environment:
-  sdk: ">=2.12.0 <4.0.0"
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=1.17.0"
 
 # Add regular dependencies here.
 dependencies:
